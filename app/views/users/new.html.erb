@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <% if @user.errors.present? %>
+        <%= show_message("There are invalid fields, please check it again!") %>
+      <% end %>
+      <h1>Create An Account</h1>
+      <%= form_for @user  do |f| %>
+        <div class="form-group <%= "has-danger" if @user.errors.messages[:name] %>">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group <%= "has-danger" if @user.errors.messages[:email] %>">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group <%= "has-danger" if @user.errors.messages[:password] %>">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="form-group <%= "has-danger" if @user.errors.messages[:password_confirmation] %>">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary btn-block">Create</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= debug @user.errors.messages %>
