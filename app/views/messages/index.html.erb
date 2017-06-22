@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Your messages</h1>
+  <p></p>
+
+  <table class="table table-striped table-messages">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>Subject</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @messages.count > 0 %>
+        <% @messages.each do |m| %>
+          <tr class="<%= 'unread' unless m.is_read %>">
+            <td class="name"><%= m.is_read ? m.sender.name : link_to(m.sender.name, message_path(m.id)) %></td>
+            <td class="subject"><%= m.is_read ? m.subject : link_to(m.subject, message_path(m.id)) %></td>
+            <td class="date"><%= m.created_at %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="3" class="empty text-center">You don't have any unread message!</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

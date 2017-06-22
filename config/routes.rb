@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # get 'messages/index'
+
+  # get 'messages/new'
+
+  # get 'messages/create'
+
+  # get 'messages/show'
+
   # get 'sessions/new'
 
   # get 'sessions/create'
@@ -10,7 +18,17 @@ Rails.application.routes.draw do
 
   # get 'users/create'
 
-  resources :sessions, only: [:new, :create, :destroy]
+  get 'add_friend', to: 'friendships#new'
+
+  resources :friendships, only: [:new, :create]
+
+  get 'messages', to: 'messages#index'
+
+  resources :messages, only: [:index, :new, :create, :show]
+
+  delete 'log_out', to: 'sessions#destroy'
+
+  resources :sessions, only: [:new, :create]
 
   resources :users, only: [:new, :create]
 

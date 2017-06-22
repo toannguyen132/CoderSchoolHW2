@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="text-center">
+        <h1>Add new friends</h1>
+        <p>Please choose one user to add friend</p>
+      </div>
+      <table class="table table-striped">
+        <tbody>
+          <% @users.each do |u| %>
+            <tr>
+              <td><%= u.name %></td>
+              <td class="text-right">
+                <%= link_to "Add", friendships_path(user_id: u.id), method: :post %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

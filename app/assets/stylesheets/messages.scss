@@ -1,0 +1,30 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  background-color: #efefef;
+}
+
+h1{
+  text-align: center;
+}
+
+.table-messages{
+  tr.unread{
+    td{
+      font-weight: 400;
+    }
+  }
+}
+
+.box{
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  // border: 1px solid #eee;
+  box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
+  border-radius: 3px;
+  padding: 30px;
+}
