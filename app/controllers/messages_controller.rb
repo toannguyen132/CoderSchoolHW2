@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
     @messages = current_user.messages
   end
 
+  def sent
+    @messages = current_user.sent_messages
+  end
+
   def show
     @message = Message.find_by_id(params[:id])
 

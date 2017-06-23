@@ -19,6 +19,10 @@ class User < ApplicationRecord
     Message.new({ sender_id: id })    
   end
 
+  def sent_messages
+    Message.where(sender_id: id)
+  end
+
   def messages
     Message.where(recipient_id: id)
   end

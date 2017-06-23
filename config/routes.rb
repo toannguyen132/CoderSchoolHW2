@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get 'messages', to: 'messages#index'
 
+  get 'messages/sent', to: 'messages#sent'
+
   resources :messages, only: [:index, :new, :create, :show]
 
   delete 'log_out', to: 'sessions#destroy'
