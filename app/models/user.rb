@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, confirmation: true
 
+  default_scope { order(created_at: :desc) }
+
   scope :not_friends, -> (friends) { where.not(id: friends.select(:friend_id)) }
 
   def friends
@@ -16,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def build_message
-    Message.new({ sender_id: id })    
+    Message.new({ sender_id: id })
   end
 
   def sent_messages
@@ -24,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def messages
-    Message.where(recipient_id: id)
+    Message.where(recipient_id: id).order(created_at: :desc)
   end
 
   def unread_messages

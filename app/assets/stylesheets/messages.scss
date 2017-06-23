@@ -4,6 +4,7 @@
 
 body{
   background-color: #efefef;
+  font-family: Roboto, sans-serif;
 }
 
 h1{
@@ -18,13 +19,63 @@ h1{
   }
 }
 
-.box{
-  max-width: 450px;
+.box-center{
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn{
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+.btn-gray{
+  background-color: #ededed;
+  color: #292b2c;
+  &:hover{
+    background-color: #dedede;
+    color: #292b2c;
+  }
+}
+
+.box{
+  @extend .box-center;
+  overflow: hidden;
+  max-width: 450px;
   background-color: #fff;
   // border: 1px solid #eee;
   box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
   border-radius: 3px;
   padding: 30px;
+}
+
+.box-button{
+  margin: 30px -30px -30px -30px;
+  display: flex;
+  .btn{
+    flex-grow: 1;
+    display: block;
+    border-radius: 0;
+  }
+}
+
+.message-item{
+  @extend .box-center;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alert{
+  margin-top: -30px;
+  border-radius: 0;
+  border: 0;
+}
+
+.table{
+  tr.unread{
+    td{
+      font-weight: bold;
+    }
+  }
 }

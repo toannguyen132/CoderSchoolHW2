@@ -4,9 +4,9 @@ Random Chat is a Ruby on Rails blog application that allows users to send messag
 
 Submitted by: Toan Nguyen
 
-Time spent: 10 hours
+Time spent: 12 hours
 
-URL: **Insert your Heroku URL here**
+URL: https://mighty-shelf-26447.herokuapp.com/
 
 ## User Stories
 
@@ -20,13 +20,13 @@ The following **required** functionality is complete:
 * [x] Clicking the "add friends" link takes the user to a page with all users listed, with a link to "add user to friends list". 
 * [x] Clicking on "new message" takes the user to a page where they can write a new mesasge. The recipient field should be a dropdown, where the options are names from the user's friends.
 * [x] Clicking on "sent messages" takes the user to a page listing messages they have sent. Each message should display at what time it was read by the recipient, or "unread". The user cannot read the contents of the messages.
-* [ ] User can read a message's content only once. Once the message has been read, the user will see a page indicating the message has already been read.
-* [ ] User can only read messages where they are the recipient.
+* [x] User can read a message's content only once. Once the message has been read, the user will see a page indicating the message has already been read.
+* [x] User can only read messages where they are the recipient.
 
 The following **optional** functionality is complete:
 
 * [ ] User can attach an image.
-* [ ] User can have multiple recipients on one message. 
+* [x] User can have multiple recipients on one message.
 * [ ] User can log in with Facebook. 
 * [ ] User A can "block" User B. If User A blocks User B, they will not see messages from User B. User B will not know they have been blocked.
 * [ ] User can remove friends from their friends list.

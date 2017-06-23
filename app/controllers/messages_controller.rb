@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     @message = Message.find_by_id(params[:id])
 
     # set as read
-    @message.set_read
+    # @message.set_read
   end
 
   def new
@@ -21,19 +21,32 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    if @message.save
-      flash[:success] = "Your message has been sent!"
-      redirect_to new_message_path
-    else
-      flash.now[:error] = @message.errors.full_messages.to_sentence
-      render new
+    count = 0
+    params[:recipient_ids].select{|v| !v.empty?}.each do |recipient_id|
+      if !recipient_id.empty?
+        @message = Message.new(message_params)
+        @message.recipient_id = recipient_id
+        if @message.save
+          count+=1
+        end
+      end
     end
+
+    flash[:success] = "Your message has been sent to #{count} #{'person'.pluralize(count)}!"
+    redirect_to new_message_path
+
+    # if @message.save
+    #   flash[:success] = "Your message has been sent!"
+    #   redirect_to new_message_path
+    # else
+    #   flash.now[:error] = @message.errors.full_messages.to_sentence
+    #   render new
+    # end
   end
 
   private
-   def message_params
-    params.require(:message).permit(:subject, :body, :sender_id, :recipient_id)
-   end
 
+  def message_params
+    params.require(:message).permit(:subject, :body, :sender_id, :recipient_id)
+  end
 end
