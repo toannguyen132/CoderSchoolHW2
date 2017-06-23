@@ -33,4 +33,8 @@ class User < ApplicationRecord
     Message.where(recipient_id: id, is_read: false)
   end
 
+  def short_name
+    name.split.map(&:first).join.upcase
+  end
+
 end
