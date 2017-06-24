@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  mount_uploader :image, ImageUploader
 
   def sender
     User.find_by_id(sender_id)

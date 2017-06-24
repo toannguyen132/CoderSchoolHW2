@@ -8,13 +8,16 @@
       <h3 class="mi-heading"><%= @message.subject %></h3>
       <div class="mi-content">
         <%= @message.body %>
+        <%= image_tag(@message.image.url, class: "img-fluid") if !@message.image.file.nil? %>
       </div>
     <% end %>
 
     <div class="box-button">
-      <%= link_to "Reply", new_message_path(recipient_id: @message.sender_id), class: "btn btn-primary" %>  
-      <%= link_to "Go Back", messages_path, class: "btn btn-gray" %>  
+      <%= link_to "Reply", new_message_path(recipient_id: @message.sender_id), class: "btn btn-primary" %>
+      <%= link_to "Go Back", messages_path, class: "btn btn-gray" %>
     </div>
   </div>
   <% @message.set_read %>
 </div>
+
+<%= debug !@message.image.file.nil? %>
