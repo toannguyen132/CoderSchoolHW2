@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   # get 'users/create'
 
+  match 'auth/:provider/callback', to: 'sessions#callback', via: [:get, :post], as: 'auth_callback'
+
   get 'add_friend', to: 'friendships#new'
 
   resources :friendships, only: [:new, :create]

@@ -12,6 +12,19 @@ class SessionsController < ApplicationController
     end
   end
 
+  def callback
+    if user = User.from_omniauth(request.env["omniauth.auth"])
+
+      user.assign_attributes(password: '1', password_confirmation: "1", name: request.env["omniauth.auth"][:info][:name])
+      user.save!
+      session[:user_id] = user.id
+      flash[:success] = "You have logged in successfully via facebook"
+      redirect_to messages_path
+    else
+      redirect_to new_session_path
+    end
+  end
+
   def destroy
     session[:user_id] = nil
     redirect_to root_path

@@ -4,7 +4,7 @@ Random Chat is a Ruby on Rails blog application that allows users to send messag
 
 Submitted by: Toan Nguyen
 
-Time spent: 12 hours
+Time spent: 14 hours
 
 URL: https://mighty-shelf-26447.herokuapp.com/
 
@@ -25,9 +25,9 @@ The following **required** functionality is complete:
 
 The following **optional** functionality is complete:
 
-* [ ] User can attach an image.
+* [x] User can attach an image.
 * [x] User can have multiple recipients on one message.
-* [ ] User can log in with Facebook. 
+* [x] User can log in with Facebook. 
 * [ ] User A can "block" User B. If User A blocks User B, they will not see messages from User B. User B will not know they have been blocked.
 * [ ] User can remove friends from their friends list.
 * [ ] User can unblock friends from their block list.
