@@ -11,10 +11,18 @@
             <tr>
               <td><%= u.name %></td>
               <td class="text-right">
-                <%= link_to "Add", friendships_path(user_id: u.id), method: :post %>
+                <%= link_to "Add", friendships_path(user_id: u.id), method: :post, class: 'btn btn-primary btn-sm' %>
               </td>
             </tr>
           <% end %>
+          <% @friends.each do |u| %>
+            <tr>
+              <td><%= u.name %></td>
+              <td class="text-right">
+                <%= link_to "Remove", friendship_path(u.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+              </td>
+            </tr>
+        <% end %>
         </tbody>
       </table>
     </div>

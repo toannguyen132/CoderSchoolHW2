@@ -1,6 +1,10 @@
 class Message < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+  def self.except_users(users)
+    where.not(sender_id: users.collect{|u| u.blocked_user_id })
+  end
+
   def sender
     User.find_by_id(sender_id)
   end

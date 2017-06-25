@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :blocked_users
   has_secure_password
   has_many :friendships
   validates :name, presence: true
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def messages
-    Message.where(recipient_id: id).order(created_at: :desc)
+    Message.where(recipient_id: id).except_users(blocked_users).order(created_at: :desc)
   end
 
   def unread_messages
@@ -35,6 +36,10 @@ class User < ApplicationRecord
 
   def short_name
     name.split.map(&:first).join.upcase
+  end
+
+  def in_blocked_list(id)
+    blocked_users.any? {|u| u.blocked_user_id == id}
   end
 
   # facebook

@@ -22,7 +22,10 @@ Rails.application.routes.draw do
 
   get 'add_friend', to: 'friendships#new'
 
-  resources :friendships, only: [:new, :create]
+  delete 'remove_friend/:id', to: 'friendships#destroy'
+
+  resources :friendships, only: [:create, :destroy]
+  resources :blocked_users, only: [:create, :destroy]
 
   get 'messages', to: 'messages#index'
 
@@ -34,7 +37,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :index]
 
   get 'index', to: 'home#index'
 
